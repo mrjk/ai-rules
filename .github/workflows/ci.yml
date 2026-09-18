@@ -22,7 +22,7 @@ jobs:
           version: 2026.7.6
           experimental: true
           cache: true
-      - run: task ci
+      - run: task --output prefixed ci
       - if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         uses: actions/upload-pages-artifact@v3
         with:
