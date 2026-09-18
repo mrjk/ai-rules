@@ -10,6 +10,7 @@
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
+        "pov/mrjk-twelve-factor",
         "stack/python-script",
         "lang-python/style",
         "tool-python/uv",
@@ -45,6 +46,7 @@
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
+        "pov/mrjk-twelve-factor",
         "stack/python-script",
         "lang-python/style",
         "tool-python/uv",
@@ -80,6 +82,7 @@
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
+        "pov/mrjk-twelve-factor",
         "stack/python-script",
         "lang-python/style",
         "tool-python/uv",

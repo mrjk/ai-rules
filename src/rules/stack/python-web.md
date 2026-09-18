@@ -11,8 +11,8 @@ tags: [python, web, api, stack]
   a route handler
 - Define request and response models explicitly and validate every incoming payload at the boundary
 - Keep the routing layer free of business rules, it maps HTTP to a service call and back
-- Read all configuration from the environment, with validation at startup and a fast failure when
-  something is missing
+- Treat the process environment as the deploy contract (level 1 twelve-factor); validate required
+  keys at startup and fail fast when something is missing; add a typed schema only at level 3
 - Return the correct status codes and a consistent error body shape with a machine readable code
 - Never leak internal details, tracebacks or SQL in a response
 - Manage database schema through versioned migrations, never by mutating a live schema by hand

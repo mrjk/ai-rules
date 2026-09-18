@@ -15,5 +15,6 @@ tags: [python, script, stack]
 - Structure it as small functions plus a `main(argv)` that returns an exit code
 - Write diagnostics to stderr and results to stdout, so the script composes in a pipeline
 - Exit non zero on failure, and never print a traceback as the user facing error
-- Keep configuration to flags and environment variables, no config file
+- Keep configuration at level 1: flags and environment variables only, no config file or XDG
+  layout
 - Document usage in a module docstring at the top, since there is no README

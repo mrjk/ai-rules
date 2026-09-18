@@ -71,6 +71,7 @@
               }
             },
             "sdlc/env-contract",
+            "pov/mrjk-twelve-factor",
             "sdlc/timeouts-retries",
             "tool-docker/project-layout",
             "tool-docker/image-hardening",
@@ -180,6 +181,7 @@
               }
             },
             "sdlc/env-contract",
+            "pov/mrjk-twelve-factor",
             "sdlc/timeouts-retries",
             "tool-docker/project-layout",
             "tool-docker/image-hardening",
@@ -289,6 +291,7 @@
               }
             },
             "sdlc/env-contract",
+            "pov/mrjk-twelve-factor",
             "sdlc/timeouts-retries",
             "tool-docker/project-layout",
             "tool-docker/image-hardening",

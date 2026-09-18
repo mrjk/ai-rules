@@ -11,7 +11,8 @@ tags: [python, cli, stack]
 - Keep the CLI layer thin: parse, validate, call the library, format the result, choose an exit code
 - Put the real logic in importable modules that know nothing about argv or stdout, and test those directly
 - Use one argument parsing library consistently, and give every command and flag help text
-- Resolve configuration in a documented order: flags, then environment, then config file, then defaults
+- Resolve configuration in documented order: CLI flag, then environment, then XDG config
+  file, then defaults; follow the project's twelve-factor config level
 - Results go to stdout, diagnostics go to stderr, and offer a machine readable output flag such as `--json`
 - Exit 0 on success and a documented non zero code on failure, and translate exceptions into messages
   that say what to do next
