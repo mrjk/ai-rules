@@ -1,6 +1,6 @@
 [
   {
-    "target": "Codex",
+    "target": "Cursor",
     "ai_workflow": {
       "type": "steps",
       "preamble": "REPLACE ME: one sentence saying what this CLI does, plus its entry point name. Install with `uv sync`, test with `uv run pytest`, lint with `ruff check .`.",
@@ -14,7 +14,9 @@
         "sdlc/dev-setup",
         {
           "slug": "sdlc/project-license",
-          "vars": { "project_license": "GPL-3.0-or-later" }
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
         },
         "git/feature-branch-workflow",
         "sdlc/github-actions-hygiene",
@@ -47,7 +49,9 @@
             "lang-python/logging",
             {
               "slug": "lang-python/packaging",
-              "vars": { "python_min_version": "3.11" }
+              "vars": {
+                "python_min_version": "3.11"
+              }
             },
             "lang-python/testing-pytest",
             "tool-python/uv",
@@ -56,7 +60,187 @@
             "tool-python/pytest",
             {
               "slug": "sdlc/license-on-add",
-              "vars": { "project_license": "GPL-3.0-or-later" }
+              "vars": {
+                "project_license": "GPL-3.0-or-later"
+              }
+            },
+            "sdlc/env-contract",
+            "pov/mrjk-python-cli",
+            "pov/mrjk-python-oop",
+            "pov/mrjk-python-logging",
+            "pov/mrjk-docs",
+            "pov/mrjk-python-misc"
+          ]
+        },
+        {
+          "step_name": "Review",
+          "description": "Review the change for correctness and clarity before handing it back.",
+          "rules": [
+            "role/reviewer",
+            "review/thorough-code-review",
+            "general/ascii-punctuation",
+            "code-style/comments-explain-why-not-what",
+            "lang-python/unsafe-apis",
+            "security/safe-defaults",
+            "security/never-expose-secrets"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "target": "Codex",
+    "ai_workflow": {
+      "type": "steps",
+      "preamble": "REPLACE ME: one sentence saying what this CLI does, plus its entry point name. Install with `uv sync`, test with `uv run pytest`, lint with `ruff check .`.",
+      "before_start": [
+        "sdlc/grounding-docs",
+        "sdlc/one-command-per-action",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
+        },
+        "git/feature-branch-workflow",
+        "sdlc/github-actions-hygiene",
+        "sdlc/repo-hygiene",
+        "general/ignore-and-secrets-files",
+        "workflow/understand-before-changing",
+        "general/ask-when-blocked",
+        "general/reviewable-increments",
+        "general/no-privileged-commands",
+        "general/config-over-constants"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "sdlc/pr-description",
+        "workflow/verify-before-completing",
+        "sdlc/revert-failed-change",
+        "git/conventional-commits",
+        "git/submodule-sync-commits"
+      ],
+      "steps": [
+        {
+          "step_name": "Implement",
+          "description": "Build the requested behaviour with tests, following the project's Python conventions.",
+          "rules": [
+            "role/developer",
+            "stack/python-cli",
+            "lang-python/style",
+            "lang-python/typing",
+            "lang-python/errors",
+            "lang-python/logging",
+            {
+              "slug": "lang-python/packaging",
+              "vars": {
+                "python_min_version": "3.11"
+              }
+            },
+            "lang-python/testing-pytest",
+            "tool-python/uv",
+            "tool-python/ruff",
+            "tool-python/mypy",
+            "tool-python/pytest",
+            {
+              "slug": "sdlc/license-on-add",
+              "vars": {
+                "project_license": "GPL-3.0-or-later"
+              }
+            },
+            "sdlc/env-contract",
+            "pov/mrjk-python-cli",
+            "pov/mrjk-python-oop",
+            "pov/mrjk-python-logging",
+            "pov/mrjk-docs",
+            "pov/mrjk-python-misc"
+          ]
+        },
+        {
+          "step_name": "Review",
+          "description": "Review the change for correctness and clarity before handing it back.",
+          "rules": [
+            "role/reviewer",
+            "review/thorough-code-review",
+            "general/ascii-punctuation",
+            "code-style/comments-explain-why-not-what",
+            "lang-python/unsafe-apis",
+            "security/safe-defaults",
+            "security/never-expose-secrets"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "target": "GitHub Copilot",
+    "ai_workflow": {
+      "type": "steps",
+      "preamble": "REPLACE ME: one sentence saying what this CLI does, plus its entry point name. Install with `uv sync`, test with `uv run pytest`, lint with `ruff check .`.",
+      "before_start": [
+        "sdlc/grounding-docs",
+        "sdlc/one-command-per-action",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
+        },
+        "git/feature-branch-workflow",
+        "sdlc/github-actions-hygiene",
+        "sdlc/repo-hygiene",
+        "general/ignore-and-secrets-files",
+        "workflow/understand-before-changing",
+        "general/ask-when-blocked",
+        "general/reviewable-increments",
+        "general/no-privileged-commands",
+        "general/config-over-constants"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "sdlc/pr-description",
+        "workflow/verify-before-completing",
+        "sdlc/revert-failed-change",
+        "git/conventional-commits",
+        "git/submodule-sync-commits"
+      ],
+      "steps": [
+        {
+          "step_name": "Implement",
+          "description": "Build the requested behaviour with tests, following the project's Python conventions.",
+          "rules": [
+            "role/developer",
+            "stack/python-cli",
+            "lang-python/style",
+            "lang-python/typing",
+            "lang-python/errors",
+            "lang-python/logging",
+            {
+              "slug": "lang-python/packaging",
+              "vars": {
+                "python_min_version": "3.11"
+              }
+            },
+            "lang-python/testing-pytest",
+            "tool-python/uv",
+            "tool-python/ruff",
+            "tool-python/mypy",
+            "tool-python/pytest",
+            {
+              "slug": "sdlc/license-on-add",
+              "vars": {
+                "project_license": "GPL-3.0-or-later"
+              }
             },
             "sdlc/env-contract",
             "pov/mrjk-python-cli",

@@ -5,7 +5,8 @@ description: Layout, slug constraint, and how ai-rulesmith resolves rules
 
 This repo is a library of small, composable rules for [ai-rulesmith](https://github.com/Luzgan/ai-rulesmith).
 Rules are plain markdown. `ai-rulesmith` does the composing and the writing of agent files
-(`CLAUDE.md`, `.cursorrules`, `AGENTS.md`, ...). Nothing here generates output on its own.
+(`.cursorrules`, `AGENTS.md`, `.github/copilot-instructions.md`, ...). Nothing here generates
+output on its own.
 
 ## Layout
 

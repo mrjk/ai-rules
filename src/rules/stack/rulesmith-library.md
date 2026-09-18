@@ -9,7 +9,8 @@ tags: [rulesmith, library, docs, stack]
 
 - Follow meta placement and authoring rules for layout; do not restate them here
 - Follow pov/mrjk-docs for generated versus handwritten documentation
-- Profiles are self contained: no extends; keep Cursor and Codex blocks in sync when both exist
+- Profiles are self contained: no extends; keep Cursor, Codex, and GitHub Copilot
+  blocks in sync when multiple targets exist
 - Keep the root dogfood config rule lists and steps aligned with the profile this project uses
 - Handwritten guides live under the docs content tree; rule pages are a symlink to the rules tree;
   profile pages are Astro routes that read the profiles tree at build time

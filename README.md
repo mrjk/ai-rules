@@ -5,9 +5,9 @@ A reusable library of AI agent rules, composed into per project agent files with
 
 Documentation: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
 
-Rules are small markdown atoms under `src/rules/`. Profiles under `src/profiles/` compose them into a
-`CLAUDE.md`, `.cursorrules` or `AGENTS.md` for a given kind of project. Define a practice once, use
-it in every project.
+Rules are small markdown atoms under `src/rules/`. Profiles under `src/profiles/` compose them into
+`.cursorrules`, `AGENTS.md`, or `.github/copilot-instructions.md` for a given kind of project.
+Define a practice once, use it in every project.
 
 ## Commands
 
@@ -59,7 +59,7 @@ CI rules.
 
 This repo's `AI_RULES.json` dogfoods `src/profiles/rulesmith-library-standard.json` (same rule lists
 and steps; keep the project-specific preamble). After changing that profile, copy the lists into
-`AI_RULES.json` and run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
+`AI_RULES.json` and run `task build` to regenerate Cursor, Codex, and GitHub Copilot agent files.
 
 ## Rule categories
 
@@ -71,7 +71,8 @@ unless this library overrides a slug.
 
 Site: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
 
-- [Using with Cursor](https://mrjk.github.io/ai-rules/start/cursor/): install a profile and generate `.cursorrules`
+- [Install and apply](https://mrjk.github.io/ai-rules/start/install/): install a profile and generate agent files
+- [Cursor](https://mrjk.github.io/ai-rules/start/cursor/) / [GitHub Copilot](https://mrjk.github.io/ai-rules/start/copilot/) / [Codex](https://mrjk.github.io/ai-rules/start/codex/): tool-specific output
 - [Cursor user rule for git](https://mrjk.github.io/ai-rules/start/cursor-user-git/): stop the default commit protocol from overriding Conventional Commits
 - [Library structure](https://mrjk.github.io/ai-rules/library/structure/): the layout, the slug constraint, resolution order
 - [Authoring](https://mrjk.github.io/ai-rules/library/authoring/): how to write a rule, and the variables gotcha

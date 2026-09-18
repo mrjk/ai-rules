@@ -108,5 +108,60 @@
         }
       ]
     }
+  },
+  {
+    "target": "GitHub Copilot",
+    "ai_workflow": {
+      "type": "steps",
+      "preamble": "This repository is a library of composable AI agent rules for ai-rulesmith. Rules live under src/rules/, profiles under src/profiles/. Install with `task install`, validate with `task validate`, list rules with `task list`, rebuild agent files with `task build`. Rule pages on the docs site come from a symlink to src/rules/; profile pages are built from src/profiles/ at docs build. Do not edit generated agent files by hand. Everyday work: Implement, then Review, then Verify.",
+      "before_start": [
+        "sdlc/grounding-docs",
+        "workflow/understand-before-changing",
+        "general/ask-when-blocked",
+        "general/reviewable-increments",
+        "meta/instruction-budget",
+        "general/ascii-punctuation",
+        "general/no-privileged-commands",
+        "general/ignore-and-secrets-files",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "sdlc/pr-description",
+        "workflow/verify-before-completing",
+        "git/conventional-commits"
+      ],
+      "steps": [
+        {
+          "step_name": "Implement",
+          "description": "Add or amend rules, profiles, and handwritten docs. Propose rule text before writing files when the change is a new practice.",
+          "rules": [
+            "role/rules-author",
+            "stack/rulesmith-library",
+            "meta/rule-placement",
+            "meta/rule-authoring-style",
+            "meta/capture-learnings",
+            "meta/change-has-a-rule",
+            "pov/mrjk-docs"
+          ]
+        },
+        {
+          "step_name": "Review",
+          "description": "Review the change for correctness, clarity, and rule-library constraints before handing it back.",
+          "rules": [
+            "role/reviewer",
+            "meta/rule-review"
+          ]
+        },
+        {
+          "step_name": "Verify",
+          "description": "Confirm the library still validates and the docs site still builds. Done when `task validate` and `task docs:build` (or `task ci`) succeed.",
+          "rules": [
+            "stack/rulesmith-library"
+          ]
+        }
+      ]
+    }
   }
 ]

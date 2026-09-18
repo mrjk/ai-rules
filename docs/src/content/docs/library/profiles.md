@@ -52,7 +52,7 @@ on top of the house CI rules.
 
 This repo's `AI_RULES.json` dogfoods `src/profiles/rulesmith-library-standard.json` (same rule lists
 and steps; keep the project-specific preamble). After changing that profile, sync the lists into
-`AI_RULES.json` and run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
+`AI_RULES.json` and run `task build` to regenerate Cursor, Codex, and GitHub Copilot agent files.
 
 Apply a profile to a project with:
 
@@ -60,5 +60,6 @@ Apply a profile to a project with:
 task apply PROFILE=python-web-standard TARGET=/path/to/project
 ```
 
-See [Using with Cursor](../start/cursor/) for the rest of that flow. Run `task list` to see every
-resolvable rule a profile can reference.
+See [Install and apply](../start/install/) for the shared flow, then the tool pages under Tools
+([Cursor](../start/cursor/), [Codex](../start/codex/), [GitHub Copilot](../start/copilot/)).
+Run `task list` to see every resolvable rule a profile can reference.

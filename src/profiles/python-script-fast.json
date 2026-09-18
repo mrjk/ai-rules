@@ -1,10 +1,12 @@
 [
   {
-    "target": "Codex",
+    "target": "Cursor",
     "ai_workflow": {
       "type": "standard",
       "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
-      "before_start": ["workflow/understand-before-changing"],
+      "before_start": [
+        "workflow/understand-before-changing"
+      ],
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
@@ -20,7 +22,9 @@
         "sdlc/dev-setup",
         {
           "slug": "sdlc/project-license",
-          "vars": { "project_license": "GPL-3.0-or-later" }
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
         },
         "pov/mrjk-python-misc"
       ],
@@ -31,11 +35,13 @@
     }
   },
   {
-    "target": "Cursor",
+    "target": "Codex",
     "ai_workflow": {
       "type": "standard",
       "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
-      "before_start": ["workflow/understand-before-changing"],
+      "before_start": [
+        "workflow/understand-before-changing"
+      ],
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
@@ -51,7 +57,44 @@
         "sdlc/dev-setup",
         {
           "slug": "sdlc/project-license",
-          "vars": { "project_license": "GPL-3.0-or-later" }
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
+        },
+        "pov/mrjk-python-misc"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "workflow/verify-before-completing"
+      ]
+    }
+  },
+  {
+    "target": "GitHub Copilot",
+    "ai_workflow": {
+      "type": "standard",
+      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
+      "before_start": [
+        "workflow/understand-before-changing"
+      ],
+      "rules": [
+        "general/ascii-punctuation",
+        "general/config-over-constants",
+        "stack/python-script",
+        "lang-python/style",
+        "tool-python/uv",
+        "code-style/small-focused-functions",
+        "error-handling/actionable-error-messages",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": {
+            "project_license": "GPL-3.0-or-later"
+          }
         },
         "pov/mrjk-python-misc"
       ],

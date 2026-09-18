@@ -24,9 +24,17 @@ export default defineConfig({
         {
           label: 'Start',
           items: [
-            { label: 'Using with Cursor', slug: 'start/cursor' },
-            { label: 'Cursor user rule for git', slug: 'start/cursor-user-git' },
+            { label: 'Install and apply', slug: 'start/install' },
             { label: 'GitHub Pages', slug: 'start/github-pages' },
+          ],
+        },
+        {
+          label: 'Tools',
+          items: [
+            { label: 'Cursor', slug: 'start/cursor' },
+            { label: 'Cursor user rule for git', slug: 'start/cursor-user-git' },
+            { label: 'GitHub Copilot', slug: 'start/copilot' },
+            { label: 'Codex', slug: 'start/codex' },
           ],
         },
         {
