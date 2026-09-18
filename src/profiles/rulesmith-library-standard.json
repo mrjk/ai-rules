@@ -3,7 +3,7 @@
     "target": "Cursor",
     "ai_workflow": {
       "type": "steps",
-      "preamble": "This repository is a library of composable AI agent rules for ai-rulesmith. Rules live under src/rules/, profiles under src/profiles/. Install with `task install`, validate with `task validate`, list rules with `task list`, rebuild agent files with `task build`. Rule pages on the docs site are generated at docs prep; do not edit the generated tree or README catalogs. Everyday work: Implement, then Review, then Verify.",
+      "preamble": "REPLACE ME: one sentence saying this is a composable ai-rulesmith rules library (rules under src/rules/, profiles under src/profiles/) plus its docs site. Install with `task install`, validate with `task validate`, list rules with `task list`, rebuild agent files with `task build`, prepare docs with `task docs:prep`, build the site with `task docs:build`. Everyday work: Implement, then Review, then Verify. Skip Specify, Design, and Release unless this session is a large redesign or a ship.",
       "before_start": [
         "sdlc/grounding-docs",
         "workflow/understand-before-changing",
@@ -58,7 +58,7 @@
     "target": "Codex",
     "ai_workflow": {
       "type": "steps",
-      "preamble": "This repository is a library of composable AI agent rules for ai-rulesmith. Rules live under src/rules/, profiles under src/profiles/. Install with `task install`, validate with `task validate`, list rules with `task list`, rebuild agent files with `task build`. Rule pages on the docs site are generated at docs prep; do not edit the generated tree or README catalogs. Everyday work: Implement, then Review, then Verify.",
+      "preamble": "REPLACE ME: one sentence saying this is a composable ai-rulesmith rules library (rules under src/rules/, profiles under src/profiles/) plus its docs site. Install with `task install`, validate with `task validate`, list rules with `task list`, rebuild agent files with `task build`, prepare docs with `task docs:prep`, build the site with `task docs:build`. Everyday work: Implement, then Review, then Verify. Skip Specify, Design, and Release unless this session is a large redesign or a ship.",
       "before_start": [
         "sdlc/grounding-docs",
         "workflow/understand-before-changing",

@@ -13,5 +13,8 @@ tags: [meta, rules, style]
 - State the command to run whenever one exists, flags included
 - Show a short good and bad example when the wording alone would be ambiguous
 - Never hardcode a file path into a rule, paths go stale and stale rules mislead
+- Exception: layout meta rules may name the rules tree and profiles tree paths, because placement
+  is the practice
 - Keep the rule portable, anything true of only one repository belongs in that repo's preamble
 - Delete rules that restate what the model already does well
+- Run `task list` before inventing a new category or slug, so you reuse what already resolves

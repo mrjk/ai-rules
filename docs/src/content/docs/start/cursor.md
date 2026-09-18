@@ -74,8 +74,9 @@ from the profile) or run `ai-rulesmith build` in the target if you only changed 
 
 ## This repository
 
-This repo uses the `rules-library` profile. `AI_RULES.json` at the root should stay in sync with
-`src/profiles/rules-library.json`. After changing that profile:
+This repo uses the `rulesmith-library-standard` profile. `AI_RULES.json` at the root should stay in
+sync with `src/profiles/rulesmith-library-standard.json` (rule lists and steps; keep the local
+preamble). After changing that profile:
 
 ```bash
 task build

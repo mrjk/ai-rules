@@ -58,8 +58,9 @@ instead of `pov/mrjk-universal-cicd`. The bash and POSIX sh script profiles incl
 opinions. Add `pov/mrjk-universal-cicd` if you want the extra ADR 0021 flavour on top of the house
 CI rules.
 
-This repo's `AI_RULES.json` is a copy of `src/profiles/rules-library.json`. Keep them the same, then
-run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
+This repo's `AI_RULES.json` dogfoods `src/profiles/rulesmith-library-standard.json` (same rule lists
+and steps; keep the project-specific preamble). After changing that profile, copy the lists into
+`AI_RULES.json` and run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
 
 ## Rule categories
 

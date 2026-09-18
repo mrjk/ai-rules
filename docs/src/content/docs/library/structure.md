@@ -52,7 +52,7 @@ Categories therefore use an axis prefix when the axis will grow a second member:
 | `meta` | rules about writing rules | `meta/capture-learnings` |
 | `role` | one persona per rule | `role/reviewer` |
 | `sdlc` | lifecycle practices | `sdlc/write-spec-first` |
-| `stack` | one project archetype per rule | `stack/python-cli` |
+| `stack` | one project archetype per rule | `stack/python-cli`, `stack/rulesmith-library` |
 | `security` | house security beyond built-ins | `security/no-git-leakage` |
 | `pov` | person-prefixed opinions, not universal house law | `pov/mrjk-universal-cicd` |
 | `git` (and other built-in categories) | override a shipped slug | `git/conventional-commits` |

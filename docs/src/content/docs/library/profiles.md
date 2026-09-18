@@ -14,6 +14,7 @@ a variant, copy the closest file in `src/profiles/` and edit its rule lists.
 | **middle** | Everyday feature and fix | `steps`: Implement → Review → Verify | `python-web-standard` |
 | **strict** | Large feature or full ship | `steps`: Specify → Design → Implement → Review → Verify → Release | `python-web-strict` |
 | CLI mid | Small CLI work | `steps`: Implement → Review | `python-cli-standard` |
+| Rules library mid | Author rules, profiles, docs | `steps`: Implement → Review → Verify | `rulesmith-library-standard` |
 
 Intents select which steps to enter. Do not invent separate Feature, Fix, Test, Run, or Release
 profiles; keep one pipeline per product shape and start or stop at the right step.
@@ -48,8 +49,9 @@ include `pov/mrjk-bash-misc` or `pov/mrjk-sh-misc`. Copy a profile and drop POV 
 should not take mrjk opinions. Add `pov/mrjk-universal-cicd` if you want the extra ADR 0021 flavour
 on top of the house CI rules.
 
-This repo's `AI_RULES.json` is a copy of `src/profiles/rules-library.json`. Keep them the same, then
-run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
+This repo's `AI_RULES.json` dogfoods `src/profiles/rulesmith-library-standard.json` (same rule lists
+and steps; keep the project-specific preamble). After changing that profile, sync the lists into
+`AI_RULES.json` and run `task build` to regenerate `AGENTS.md` and `.cursorrules`.
 
 Apply a profile to a project with:
 
