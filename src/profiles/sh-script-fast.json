@@ -3,18 +3,15 @@
     "target": "Codex",
     "ai_workflow": {
       "type": "standard",
-      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
+      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `sh <script>.sh`.",
       "before_start": ["workflow/understand-before-changing"],
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
-        "stack/python-script",
-        "lang-python/style",
-        "tool-python/uv",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
         "pov/mrjk-cicd",
-        "pov/mrjk-python-misc"
+        "pov/mrjk-sh-misc"
       ],
       "before_finish": [
         "general/concise-reporting",
@@ -26,18 +23,15 @@
     "target": "Cursor",
     "ai_workflow": {
       "type": "standard",
-      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
+      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `sh <script>.sh`.",
       "before_start": ["workflow/understand-before-changing"],
       "rules": [
         "general/ascii-punctuation",
         "general/config-over-constants",
-        "stack/python-script",
-        "lang-python/style",
-        "tool-python/uv",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
         "pov/mrjk-cicd",
-        "pov/mrjk-python-misc"
+        "pov/mrjk-sh-misc"
       ],
       "before_finish": [
         "general/concise-reporting",

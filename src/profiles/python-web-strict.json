@@ -42,7 +42,7 @@
             "role/architect",
             "sdlc/adr-for-decisions",
             "architecture/solid-principles",
-            "pov/mrjk-oop",
+            "pov/mrjk-python-oop",
             "pov/mrjk-http"
           ]
         },
@@ -67,11 +67,11 @@
             "tool-python/ruff",
             "tool-python/mypy",
             "sdlc/dependency-upgrades",
-            "pov/mrjk-cli",
-            "pov/mrjk-logging",
+            "pov/mrjk-python-cli",
+            "pov/mrjk-python-logging",
             "pov/mrjk-docs",
             "pov/mrjk-compose",
-            "pov/mrjk-misc"
+            "pov/mrjk-python-misc"
           ]
         },
         {

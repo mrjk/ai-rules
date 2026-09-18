@@ -1,11 +1,11 @@
 ---
-name: Mrjk Misc Conventions
+name: Mrjk Python Misc Conventions
 description: utf-8, distinct ident/name/path, no WIP dumps, golden regressions, layered imports
 category: pov
 tags: [pov, mrjk, python]
 ---
 
-# Mrjk Misc Conventions
+# Mrjk Python Misc Conventions
 
 - Read and write text with `encoding="utf-8"`
 - Treat identity, display name, and filesystem path as separate fields; do not silently substitute

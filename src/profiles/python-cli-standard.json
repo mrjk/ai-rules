@@ -42,11 +42,11 @@
             "tool-python/ruff",
             "tool-python/mypy",
             "tool-python/pytest",
-            "pov/mrjk-cli",
-            "pov/mrjk-oop",
-            "pov/mrjk-logging",
+            "pov/mrjk-python-cli",
+            "pov/mrjk-python-oop",
+            "pov/mrjk-python-logging",
             "pov/mrjk-docs",
-            "pov/mrjk-misc"
+            "pov/mrjk-python-misc"
           ]
         },
         {

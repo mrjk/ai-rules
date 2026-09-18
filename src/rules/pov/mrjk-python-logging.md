@@ -1,11 +1,11 @@
 ---
-name: Mrjk Verbosity Ladder
+name: Mrjk Python Verbosity Ladder
 description: Ansible-style -v counts, orthogonal --trace, secrets only at maximum verbosity
 category: pov
-tags: [pov, mrjk, logging]
+tags: [pov, mrjk, python, logging]
 ---
 
-# Mrjk Verbosity Ladder
+# Mrjk Python Verbosity Ladder
 
 - Use one `-v` count ladder for the whole CLI, not per-command flags
 - Default is quiet: warnings and errors

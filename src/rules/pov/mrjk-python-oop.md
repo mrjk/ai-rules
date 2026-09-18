@@ -1,11 +1,11 @@
 ---
-name: Mrjk OOP Default
+name: Mrjk Python OOP Default
 description: Domain identity and lifecycle live on classes; pure transforms stay functions
 category: pov
 tags: [pov, mrjk, python, oop]
 ---
 
-# Mrjk OOP Default
+# Mrjk Python OOP Default
 
 - For domain behavior, default to a class when the unit has identity, session state, a lifecycle,
   or interchangeable implementations

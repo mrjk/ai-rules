@@ -1,11 +1,11 @@
 ---
-name: Mrjk Clak CLI
+name: Mrjk Python Clak CLI
 description: Build mrjk CLIs with Clak classes, a thin adapter over a library, typed user errors
 category: pov
-tags: [pov, mrjk, cli, clak]
+tags: [pov, mrjk, python, cli, clak]
 ---
 
-# Mrjk Clak CLI
+# Mrjk Python Clak CLI
 
 - New mrjk CLIs use Clak on stdlib argparse: `Parser`, `Argument`, and `Command` classes, not a
   Click or Typer decorator DSL
