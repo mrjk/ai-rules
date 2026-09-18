@@ -19,6 +19,7 @@ export default defineConfig({
           label: 'Start',
           items: [
             { label: 'Using with Cursor', slug: 'start/cursor' },
+            { label: 'Cursor user rule for git', slug: 'start/cursor-user-git' },
             { label: 'GitHub Pages', slug: 'start/github-pages' },
           ],
         },

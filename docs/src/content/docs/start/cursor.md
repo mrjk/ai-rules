@@ -53,6 +53,11 @@ unless you are editing the library itself.
 Cursor project rules apply to that workspace. They do not replace your user rules in Cursor
 settings. Keep user rules short; put shared practices in this library.
 
+Cursor's default commit user rule (1-2 sentence why-focused messages) fights
+`git/conventional-commits` when you ask the agent to commit. Replace the message-drafting bullets
+with the snippet in [Cursor user rule for git commits](./cursor-user-git/). A new Agent chat is
+required after you change User Rules.
+
 ## 5. Describe the project, then rebuild
 
 Edit the `preamble` in `AI_RULES.json` so the agent knows what the repo is. Rebuild after that
