@@ -33,6 +33,7 @@
         "general/concise-reporting",
         "sdlc/pr-description",
         "workflow/verify-before-completing",
+        "sdlc/revert-failed-change",
         "git/conventional-commits",
         "git/submodule-sync-commits"
       ],
@@ -78,6 +79,7 @@
             "tool-python/ruff",
             "tool-python/mypy",
             "sdlc/dependency-upgrades",
+            "sdlc/one-package-upgrade",
             {
               "slug": "sdlc/license-on-add",
               "vars": { "project_license": "GPL-3.0-or-later" }

@@ -3,10 +3,12 @@
     "target": "Codex",
     "ai_workflow": {
       "type": "steps",
-      "preamble": "REPLACE ME: one sentence saying what this CLI does, plus its entry point name. Install with `uv sync`, test with `uv run pytest`, lint with `ruff check .`.",
+      "preamble": "REPLACE ME: one sentence saying what this service does and which framework and datastore it uses. Install with `uv sync`, test with `uv run pytest`, lint with `ruff check .`. Everyday feature and fix work: Implement, then Review, then Verify. For a bug fix, reproduce first (Verify / reproduce-then-fix) before Implement. Skip Specify, Design, and Release unless this session is a large feature or a ship.",
       "before_start": [
         "sdlc/grounding-docs",
+        "sdlc/brownfield-grounding",
         "sdlc/one-command-per-action",
+        "sdlc/ci-same-commands",
         "tool-mise/pin-toolchain",
         "tool-task/taskfile-practices",
         "sdlc/pin-versions",
@@ -24,6 +26,7 @@
         "general/ask-when-blocked",
         "general/reviewable-increments",
         "general/no-privileged-commands",
+        "general/ascii-punctuation",
         "general/config-over-constants"
       ],
       "before_finish": [
@@ -37,46 +40,63 @@
       "steps": [
         {
           "step_name": "Implement",
-          "description": "Build the requested behaviour with tests, following the project's Python conventions.",
+          "description": "Implement one clear change at a time with tests.",
           "rules": [
             "role/developer",
-            "stack/python-cli",
+            "stack/python-web",
             "lang-python/style",
             "lang-python/typing",
             "lang-python/errors",
             "lang-python/logging",
+            "lang-python/async",
+            "lang-python/time",
+            "lang-python/unsafe-apis",
             {
               "slug": "lang-python/packaging",
               "vars": { "python_min_version": "3.11" }
             },
-            "lang-python/testing-pytest",
             "tool-python/uv",
             "tool-python/ruff",
             "tool-python/mypy",
-            "tool-python/pytest",
+            "sdlc/dependency-upgrades",
+            "sdlc/one-package-upgrade",
             {
               "slug": "sdlc/license-on-add",
               "vars": { "project_license": "GPL-3.0-or-later" }
             },
             "sdlc/env-contract",
+            "sdlc/timeouts-retries",
+            "tool-docker/project-layout",
+            "tool-docker/image-hardening",
             "pov/mrjk-python-cli",
-            "pov/mrjk-python-oop",
             "pov/mrjk-python-logging",
             "pov/mrjk-docs",
+            "pov/mrjk-compose",
             "pov/mrjk-python-misc"
           ]
         },
         {
           "step_name": "Review",
-          "description": "Review the change for correctness and clarity before handing it back.",
+          "description": "Review correctness, then audit the security of the boundaries.",
           "rules": [
             "role/reviewer",
             "review/thorough-code-review",
-            "general/ascii-punctuation",
-            "code-style/comments-explain-why-not-what",
-            "lang-python/unsafe-apis",
+            "review/security-audit",
             "security/safe-defaults",
+            "security/validate-external-input",
             "security/never-expose-secrets"
+          ]
+        },
+        {
+          "step_name": "Verify",
+          "description": "Reproduce failures first when fixing bugs, then attack the change with tests until boundaries and error paths are covered.",
+          "rules": [
+            "role/qa",
+            "sdlc/reproduce-then-fix",
+            "lang-python/testing-pytest",
+            "tool-python/pytest",
+            "testing/prefer-integration-tests",
+            "testing/never-weaken-tests"
           ]
         }
       ]
