@@ -49,7 +49,7 @@ Categories therefore use an axis prefix when the axis will grow a second member:
 | `role` | one persona per rule | `role/reviewer` |
 | `sdlc` | lifecycle practices | `sdlc/write-spec-first` |
 | `stack` | one project archetype per rule | `stack/python-cli` |
-| `pov` | person-prefixed opinions, not universal house law | `pov/mrjk-cicd` |
+| `pov` | person-prefixed opinions, not universal house law | `pov/mrjk-universal-cicd` |
 | `git` (and other built-in categories) | override a shipped slug | `git/conventional-commits` |
 
 Rule filenames are short nouns describing the single practice: `lang-python/typing.md`, not

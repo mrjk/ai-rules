@@ -10,7 +10,7 @@
         "general/config-over-constants",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "pov/mrjk-sh-misc"
       ],
       "before_finish": [
@@ -30,7 +30,7 @@
         "general/config-over-constants",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "pov/mrjk-sh-misc"
       ],
       "before_finish": [

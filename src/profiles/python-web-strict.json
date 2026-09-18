@@ -9,7 +9,7 @@
         "sdlc/brownfield-grounding",
         "sdlc/one-command-per-action",
         "sdlc/ci-same-commands",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "general/ignore-and-secrets-files",
         "workflow/understand-before-changing",
         "general/ask-when-blocked",

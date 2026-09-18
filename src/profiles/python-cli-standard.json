@@ -7,7 +7,7 @@
       "before_start": [
         "sdlc/grounding-docs",
         "sdlc/one-command-per-action",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "general/ignore-and-secrets-files",
         "workflow/understand-before-changing",
         "general/ask-when-blocked",

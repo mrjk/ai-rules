@@ -13,7 +13,7 @@ tags: [meta, rules, structure]
   anything else
 - Category names carry the hierarchy: `lang-<language>` for language knowledge,
   `tool-<ecosystem>` for toolchains, plus `general`, `meta`, `role`, `sdlc`, `stack`
-  and `pov`. Person-prefixed opinions are `pov/<who>-<topic>` (example: `pov/mrjk-cicd`).
+  and `pov`. Person-prefixed opinions are `pov/<who>-<topic>` (example: `pov/mrjk-universal-cicd`).
   To override a built-in, reuse its slug (category and name) so resolution replaces it
 - The `category` value in frontmatter must equal the directory name
 - Never put a README, a template or any other prose file inside a rules directory, every `.md` there

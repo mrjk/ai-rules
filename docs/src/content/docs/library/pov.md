@@ -4,16 +4,16 @@ description: Person-prefixed opinions, default mrjk set, source map
 ---
 
 `pov` holds person-prefixed opinions. They are not universal house law. A later contributor can
-add `pov/alice-cicd` without editing `pov/mrjk-cicd`. Slugs stay two segments:
+add `pov/alice-cicd` without editing `pov/mrjk-universal-cicd`. Slugs stay two segments:
 `pov/<who>-<topic>`.
 
-Python profiles in this library enable the `mrjk-python-*` set plus shared `pov/mrjk-cicd` (and
+Python profiles in this library enable the `mrjk-python-*` set plus shared `pov/mrjk-universal-cicd` (and
 compose, http, docs where the profile already lists them). To omit them, copy the closest profile
 and drop those slugs. There is no inheritance.
 
 | Slug | What it covers |
 | --- | --- |
-| `pov/mrjk-cicd` | mise pins tools, Task owns workflow, provider YAML is a thin bootstrap |
+| `pov/mrjk-universal-cicd` | mise pins tools, Task owns workflow, provider YAML is a thin bootstrap |
 | `pov/mrjk-python-oop` | classes for domain identity and lifecycle |
 | `pov/mrjk-docs` | generate reference tables that can drift from code |
 | `pov/mrjk-python-cli` | Clak class CLIs, thin adapter, typed user errors |
@@ -30,7 +30,7 @@ Distilled from existing ADRs; originals stay in those projects. Not copied whole
 
 | Rule | Origin (topic, not a live path) |
 | --- | --- |
-| `mrjk-cicd` | Paasify ADR 0021 Universal CI/CD |
+| `mrjk-universal-cicd` | Paasify ADR 0021 Universal CI/CD |
 | `mrjk-python-oop` | Paasify ADR 0080 OOP coding style, layering from ADR 0030 |
 | `mrjk-docs` | Paasify ADR 0068 docs autogeneration |
 | `mrjk-python-cli` | Clak architecture (argparse engine, owned UI) plus Paasify dual-CLI altitude |

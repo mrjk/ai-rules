@@ -13,7 +13,7 @@
         "tool-python/uv",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "pov/mrjk-python-misc"
       ],
       "before_finish": [
@@ -36,7 +36,7 @@
         "tool-python/uv",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-cicd",
+        "pov/mrjk-universal-cicd",
         "pov/mrjk-python-misc"
       ],
       "before_finish": [

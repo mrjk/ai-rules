@@ -15,7 +15,7 @@ a variant, copy the closest file in `src/profiles/` and edit its rule lists.
 | `sh-script-fast` | standard workflow, thin rule set | a single POSIX `sh` script |
 | `rules-library` | standard workflow, meta plus house standards | this repository, maintaining the rule library |
 
-The three Python profiles include `pov/mrjk-python-*` plus shared `pov/mrjk-cicd` (and compose,
+The three Python profiles include `pov/mrjk-python-*` plus shared `pov/mrjk-universal-cicd` (and compose,
 http, docs where listed). The bash and POSIX sh script profiles include `pov/mrjk-bash-misc` or
 `pov/mrjk-sh-misc`. Copy a profile and drop those slugs if a project should not take mrjk opinions.
 `rules-library` does not include them.
