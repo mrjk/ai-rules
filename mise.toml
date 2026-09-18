@@ -3,3 +3,6 @@ node = "24.1.0"
 npm = "latest"
 task = "latest"
 "npm:ai-rulesmith" = "latest"
+
+[settings]
+experimental = true
