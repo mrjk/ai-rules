@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { listProfiles } from './src/lib/profiles.mjs';
+import { remarkStripRuleH1 } from './src/lib/strip-rule-h1.mjs';
 
 const profileSidebarItems = listProfiles().map((name) => ({
   label: name,
@@ -12,6 +13,9 @@ export default defineConfig({
   base: '/ai-rules',
   image: {
     service: { entrypoint: 'astro/assets/services/noop' },
+  },
+  markdown: {
+    remarkPlugins: [remarkStripRuleH1],
   },
   integrations: [
     starlight({
