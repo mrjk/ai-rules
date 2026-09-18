@@ -1,0 +1,8 @@
+node_modules/
+
+# Created by 'task bootstrap' so this repo can resolve its own rules
+/.rulesmith/
+
+# Scratch directories used when smoke testing vendor and apply
+.smoke/
+.tmp-verify/

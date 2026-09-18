@@ -1,0 +1,48 @@
+[
+  {
+    "target": "Codex",
+    "ai_workflow": {
+      "type": "standard",
+      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
+      "before_start": ["workflow/understand-before-changing"],
+      "rules": [
+        "general/ascii-punctuation",
+        "general/config-over-constants",
+        "stack/python-script",
+        "lang-python/style",
+        "tool-python/uv",
+        "code-style/small-focused-functions",
+        "error-handling/actionable-error-messages",
+        "pov/mrjk-cicd",
+        "pov/mrjk-misc"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "workflow/verify-before-completing"
+      ]
+    }
+  },
+  {
+    "target": "Cursor",
+    "ai_workflow": {
+      "type": "standard",
+      "preamble": "REPLACE ME: one sentence saying what this script does. Run it with `uv run <script>.py`.",
+      "before_start": ["workflow/understand-before-changing"],
+      "rules": [
+        "general/ascii-punctuation",
+        "general/config-over-constants",
+        "stack/python-script",
+        "lang-python/style",
+        "tool-python/uv",
+        "code-style/small-focused-functions",
+        "error-handling/actionable-error-messages",
+        "pov/mrjk-cicd",
+        "pov/mrjk-misc"
+      ],
+      "before_finish": [
+        "general/concise-reporting",
+        "workflow/verify-before-completing"
+      ]
+    }
+  }
+]

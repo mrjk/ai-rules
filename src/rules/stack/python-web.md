@@ -1,0 +1,23 @@
+---
+name: Stack Python Web Service
+description: An HTTP service with validated boundaries, layered structure and real health checks
+category: stack
+tags: [python, web, api, stack]
+---
+
+# Stack: Python Web Service
+
+- Separate the layers: routing, then service logic, then data access, and never call the database from
+  a route handler
+- Define request and response models explicitly and validate every incoming payload at the boundary
+- Keep the routing layer free of business rules, it maps HTTP to a service call and back
+- Read all configuration from the environment, with validation at startup and a fast failure when
+  something is missing
+- Return the correct status codes and a consistent error body shape with a machine readable code
+- Never leak internal details, tracebacks or SQL in a response
+- Manage database schema through versioned migrations, never by mutating a live schema by hand
+- Use dependency injection for external clients and sessions so tests can substitute them
+- Expose a liveness endpoint that is cheap and a readiness endpoint that actually checks dependencies
+- Log one structured line per request with a correlation id, and never log request bodies or auth headers
+- Enforce authentication and authorisation at the boundary, and check ownership on every resource access
+- Test with a real HTTP client against the app, and use a real database in integration tests
