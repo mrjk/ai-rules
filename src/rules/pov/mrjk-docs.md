@@ -12,7 +12,7 @@ tags: [pov, mrjk, docs]
 - Do not maintain parallel catalog tables by hand; point at the list or generate command
 - Keep ADRs, guides, and intent essays handwritten
 - Use a stable prose wrapper with a generated middle between marker comments when the page is mixed
-- Hook generators into the same docs-prep task the site build already runs
+- Hook generators into the same docs build the site already runs
 - Run the generate task; never edit generated output by hand
 - Prefer build-time untracked output over committed copies that churn on every source edit
 - When you add a registry or setting catalog, add its generator or drift check in the same change

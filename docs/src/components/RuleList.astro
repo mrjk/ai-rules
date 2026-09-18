@@ -1,0 +1,34 @@
+---
+import { ruleHref } from '../lib/profiles.mjs';
+
+interface Props {
+  rules: { slug: string; vars?: Record<string, unknown> }[];
+}
+
+const { rules } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+{
+  rules.length === 0 ? (
+    <p>
+      <em>None</em>
+    </p>
+  ) : (
+    <ul>
+      {rules.map((rule) => (
+        <li>
+          <a href={ruleHref(rule.slug, base)}>
+            <code>{rule.slug}</code>
+          </a>
+          {rule.vars ? (
+            <>
+              {' '}
+              <code>{JSON.stringify(rule.vars)}</code>
+            </>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  )
+}

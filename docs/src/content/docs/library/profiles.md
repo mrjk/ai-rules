@@ -4,17 +4,18 @@ description: Ready-made AI_RULES.json variants, from fast scripts to a full web 
 ---
 
 A profile is a self contained `AI_RULES.json`. There is no inheritance in `ai-rulesmith`, so to make
-a variant, copy the closest file in `src/profiles/` and edit its rule lists.
+a variant, copy the closest file in `src/profiles/` and edit its rule lists. Per-profile pages under
+[Profiles](../../profiles/python-web-standard/) are generated at docs build time from `src/profiles/`.
 
 ## Tiers: fast, middle, strict
 
 | Tier | When to use | Workflow | Example profiles |
 | --- | --- | --- | --- |
-| **fast** | Run, explore, one-off scripts | `standard` (no steps) | `python-script-fast`, `bash-script-fast`, `sh-script-fast` |
-| **middle** | Everyday feature and fix | `steps`: Implement → Review → Verify | `python-web-standard` |
-| **strict** | Large feature or full ship | `steps`: Specify → Design → Implement → Review → Verify → Release | `python-web-strict` |
-| CLI mid | Small CLI work | `steps`: Implement → Review | `python-cli-standard` |
-| Rules library mid | Author rules, profiles, docs | `steps`: Implement → Review → Verify | `rulesmith-library-standard` |
+| **fast** | Run, explore, one-off scripts | `standard` (no steps) | [`python-script-fast`](../../profiles/python-script-fast/), [`bash-script-fast`](../../profiles/bash-script-fast/), [`sh-script-fast`](../../profiles/sh-script-fast/) |
+| **middle** | Everyday feature and fix | `steps`: Implement → Review → Verify | [`python-web-standard`](../../profiles/python-web-standard/) |
+| **strict** | Large feature or full ship | `steps`: Specify → Design → Implement → Review → Verify → Release | [`python-web-strict`](../../profiles/python-web-strict/) |
+| CLI mid | Small CLI work | `steps`: Implement → Review | [`python-cli-standard`](../../profiles/python-cli-standard/) |
+| Rules library mid | Author rules, profiles, docs | `steps`: Implement → Review → Verify | [`rulesmith-library-standard`](../../profiles/rulesmith-library-standard/) |
 
 Intents select which steps to enter. Do not invent separate Feature, Fix, Test, Run, or Release
 profiles; keep one pipeline per product shape and start or stop at the right step.

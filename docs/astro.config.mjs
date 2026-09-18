@@ -1,5 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { listProfiles } from './src/lib/profiles.mjs';
+
+const profileSidebarItems = listProfiles().map((name) => ({
+  label: name,
+  link: `profiles/${name}/`,
+}));
 
 export default defineConfig({
   site: 'https://mrjk.github.io',
@@ -26,6 +32,10 @@ export default defineConfig({
         {
           label: 'Library',
           autogenerate: { directory: 'library' },
+        },
+        {
+          label: 'Profiles',
+          items: profileSidebarItems,
         },
         {
           label: 'Rules',
