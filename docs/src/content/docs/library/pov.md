@@ -7,22 +7,11 @@ description: Person-prefixed opinions, default mrjk set, source map
 add `pov/alice-cicd` without editing `pov/mrjk-universal-cicd`. Slugs stay two segments:
 `pov/<who>-<topic>`.
 
-Python profiles in this library enable the `mrjk-python-*` set plus shared `pov/mrjk-universal-cicd` (and
-compose, http, docs where the profile already lists them). To omit them, copy the closest profile
-and drop those slugs. There is no inheritance.
-
-| Slug | What it covers |
-| --- | --- |
-| `pov/mrjk-universal-cicd` | mise pins tools, Task owns workflow, provider YAML is a thin bootstrap |
-| `pov/mrjk-python-oop` | classes for domain identity and lifecycle |
-| `pov/mrjk-docs` | generate reference tables that can drift from code |
-| `pov/mrjk-python-cli` | Clak class CLIs, thin adapter, typed user errors |
-| `pov/mrjk-python-logging` | `-v` count ladder, orthogonal `--trace`, secret-safe defaults |
-| `pov/mrjk-compose` | Compose authoring and native CLI constraints |
-| `pov/mrjk-http` | versioned noun API, GET read-only, RFC 9457 |
-| `pov/mrjk-python-misc` | small leftover Python conventions that do not deserve their own file |
-| `pov/mrjk-bash-misc` | Bash strict mode, modular functions, Bash 4.0 floor |
-| `pov/mrjk-sh-misc` | POSIX sh: same intent as bash-misc without bashisms |
+Python profiles in this library enable the `mrjk-python-*` set (and compose, http, docs where the
+profile already lists them). House CI is `tool-mise/pin-toolchain` and `tool-task/taskfile-practices`.
+`pov/mrjk-universal-cicd` is opt-in on a copied profile. To omit POV slugs, copy the closest profile
+and drop them. There is no inheritance. Browse the live slugs under Rules in the sidebar, or run
+`task list`.
 
 ## Source map (first import)
 

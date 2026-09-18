@@ -10,7 +10,15 @@
         "general/config-over-constants",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-universal-cicd",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": { "project_license": "GPL-3.0-or-later" }
+        },
         "pov/mrjk-bash-misc"
       ],
       "before_finish": [
@@ -30,7 +38,15 @@
         "general/config-over-constants",
         "code-style/small-focused-functions",
         "error-handling/actionable-error-messages",
-        "pov/mrjk-universal-cicd",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": { "project_license": "GPL-3.0-or-later" }
+        },
         "pov/mrjk-bash-misc"
       ],
       "before_finish": [

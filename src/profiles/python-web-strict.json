@@ -9,7 +9,18 @@
         "sdlc/brownfield-grounding",
         "sdlc/one-command-per-action",
         "sdlc/ci-same-commands",
-        "pov/mrjk-universal-cicd",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": { "project_license": "GPL-3.0-or-later" }
+        },
+        "git/feature-branch-workflow",
+        "sdlc/github-actions-hygiene",
+        "sdlc/repo-hygiene",
         "general/ignore-and-secrets-files",
         "workflow/understand-before-changing",
         "general/ask-when-blocked",
@@ -67,6 +78,14 @@
             "tool-python/ruff",
             "tool-python/mypy",
             "sdlc/dependency-upgrades",
+            {
+              "slug": "sdlc/license-on-add",
+              "vars": { "project_license": "GPL-3.0-or-later" }
+            },
+            "sdlc/env-contract",
+            "sdlc/timeouts-retries",
+            "tool-docker/project-layout",
+            "tool-docker/image-hardening",
             "pov/mrjk-python-cli",
             "pov/mrjk-python-logging",
             "pov/mrjk-docs",
@@ -81,6 +100,7 @@
             "role/reviewer",
             "review/thorough-code-review",
             "review/security-audit",
+            "security/safe-defaults",
             "security/validate-external-input",
             "security/never-expose-secrets"
           ]
@@ -103,7 +123,8 @@
           "rules": [
             "role/tech-writer",
             "sdlc/release-checklist",
-            "git/semantic-versioning"
+            "git/semantic-versioning",
+            "git/support-branches"
           ]
         }
       ]

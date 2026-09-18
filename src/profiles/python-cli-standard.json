@@ -7,7 +7,18 @@
       "before_start": [
         "sdlc/grounding-docs",
         "sdlc/one-command-per-action",
-        "pov/mrjk-universal-cicd",
+        "tool-mise/pin-toolchain",
+        "tool-task/taskfile-practices",
+        "sdlc/pin-versions",
+        "security/no-git-leakage",
+        "sdlc/dev-setup",
+        {
+          "slug": "sdlc/project-license",
+          "vars": { "project_license": "GPL-3.0-or-later" }
+        },
+        "git/feature-branch-workflow",
+        "sdlc/github-actions-hygiene",
+        "sdlc/repo-hygiene",
         "general/ignore-and-secrets-files",
         "workflow/understand-before-changing",
         "general/ask-when-blocked",
@@ -42,6 +53,11 @@
             "tool-python/ruff",
             "tool-python/mypy",
             "tool-python/pytest",
+            {
+              "slug": "sdlc/license-on-add",
+              "vars": { "project_license": "GPL-3.0-or-later" }
+            },
+            "sdlc/env-contract",
             "pov/mrjk-python-cli",
             "pov/mrjk-python-oop",
             "pov/mrjk-python-logging",
@@ -58,6 +74,7 @@
             "general/ascii-punctuation",
             "code-style/comments-explain-why-not-what",
             "lang-python/unsafe-apis",
+            "security/safe-defaults",
             "security/never-expose-secrets"
           ]
         }

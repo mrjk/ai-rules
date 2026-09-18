@@ -19,6 +19,10 @@ src/
     stack/              project archetypes: python-cli, python-web, python-script
     lang-python/        Python language knowledge
     tool-python/        Python toolchain knowledge: uv, ruff, mypy, pytest
+    tool-mise/          pin the toolchain with mise
+    tool-task/          Taskfile workflow entrypoints
+    tool-docker/        Compose layout and image hardening
+    security/           house security practices beyond the built-ins
     pov/                person-prefixed opinions: pov/<who>-<topic>
   profiles/             ready made AI_RULES.json variants, fast to strict
 docs/                   Starlight site (this documentation)
@@ -43,12 +47,13 @@ Categories therefore use an axis prefix when the axis will grow a second member:
 | Category pattern | Meaning | Examples |
 | --- | --- | --- |
 | `lang-<language>` | knowledge about a language itself | `lang-python`, later `lang-bash`, `lang-go` |
-| `tool-<ecosystem>` | knowledge about a toolchain | `tool-python`, later `tool-git`, `tool-nix` |
+| `tool-<ecosystem>` | knowledge about a toolchain | `tool-python`, `tool-mise`, `tool-task`, `tool-docker` |
 | `general` | house standards, true for every task | `general/ascii-punctuation` |
 | `meta` | rules about writing rules | `meta/capture-learnings` |
 | `role` | one persona per rule | `role/reviewer` |
 | `sdlc` | lifecycle practices | `sdlc/write-spec-first` |
 | `stack` | one project archetype per rule | `stack/python-cli` |
+| `security` | house security beyond built-ins | `security/no-git-leakage` |
 | `pov` | person-prefixed opinions, not universal house law | `pov/mrjk-universal-cicd` |
 | `git` (and other built-in categories) | override a shipped slug | `git/conventional-commits` |
 

@@ -19,6 +19,7 @@ vars:
   PROJECT_CONFIG_NAME: 'AI_RULES.json'
   DOCS_DIR: '{{.ROOT_DIR}}/docs'
   DOCS_DIST: '{{.DOCS_DIR}}/dist'
+  DOCS_RULES_DIR: '{{.DOCS_DIR}}/src/content/docs/rules'
   MISE: mise
   # Absolute binary from this repo's mise.toml, so apply can cd into TARGET.
   RULESMITH: '"$({{.MISE}} -C ''{{.ROOT_DIR}}'' which ai-rulesmith)"'
@@ -139,9 +140,16 @@ tasks:
     cmds:
       - npm ci
 
+  docs:prep:
+    desc: Copy rule sources into the Starlight tree
+    cmds:
+      - mkdir -p '{{.DOCS_RULES_DIR}}'
+      - rsync -a --delete '{{.RULES_DIR}}/' '{{.DOCS_RULES_DIR}}/'
+
   docs:dev:
     desc: Preview the documentation site locally
     dir: '{{.DOCS_DIR}}'
+    deps: [docs:prep]
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
     cmds:
@@ -151,6 +159,7 @@ tasks:
   docs:build:
     desc: Build the documentation site into docs/dist
     dir: '{{.DOCS_DIR}}'
+    deps: [docs:prep]
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
     cmds:
