@@ -1,0 +1,29 @@
+---
+title: AI Rules
+description: Reusable AI agent rules composed with ai-rulesmith
+---
+
+A library of small markdown rules under `src/rules/`. Profiles under `src/profiles/` compose them
+into `.cursorrules`, `CLAUDE.md`, or `AGENTS.md` with
+[ai-rulesmith](https://github.com/Luzgan/ai-rulesmith).
+
+Define a practice once, reuse it in every project.
+
+## Start here
+
+- [Using with Cursor](start/cursor/) - install the library, pick a profile, open the project in Cursor
+- [GitHub Pages](start/github-pages/) - how this site is built and what to enable on GitHub
+- [Library structure](library/structure/) - slugs, categories, resolution order
+- [Rules](rules/general/ascii-punctuation/) - browse every rule in this library
+
+## Commands
+
+| Command | What it does |
+| --- | --- |
+| `task install` | Install tools pinned in `mise.toml` |
+| `task link` | Symlink `src/rules/` to `~/.config/rulesmith/rules` |
+| `task vendor TARGET=/path` | Copy a snapshot into a project's `.rulesmith/rules/` |
+| `task apply PROFILE=<name> TARGET=/path` | Install a profile and build agent files |
+| `task validate` | Validate this repo's config and every profile |
+| `task docs:dev` | Preview this site locally |
+| `task ci` | Validate the library and build the site |

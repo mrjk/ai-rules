@@ -12,11 +12,13 @@ vars:
   PROFILES_DIR: '{{.SRC_DIR}}/{{.PROFILES_SUBDIR}}'
   # Relative to .rulesmith/, the directory that holds the bootstrap symlink.
   BOOTSTRAP_RULES_REL: '../{{.SRC_SUBDIR}}/{{.RULES_SUBDIR}}'
-  # Where ai-rulesmith looks for global rules (see docs/structure.md).
+  # Where ai-rulesmith looks for global rules (see docs/src/content/docs/library/structure.md).
   GLOBAL_RULES_DIR: '{{.HOME}}/.config/rulesmith/rules'
   # Per project locations, relative to the consuming project.
   PROJECT_RULES_SUBDIR: '.rulesmith/rules'
   PROJECT_CONFIG_NAME: 'AI_RULES.json'
+  DOCS_DIR: '{{.ROOT_DIR}}/docs'
+  DOCS_DIST: '{{.DOCS_DIR}}/dist'
   MISE: mise
   # Absolute binary from this repo's mise.toml, so apply can cd into TARGET.
   RULESMITH: '"$({{.MISE}} -C ''{{.ROOT_DIR}}'' which ai-rulesmith)"'
@@ -128,6 +130,38 @@ tasks:
     deps: [bootstrap]
     cmds:
       - '{{.RULESMITH}} list-rules {{.CLI_ARGS}}'
+
+  docs:install:
+    desc: Install Starlight dependencies
+    dir: '{{.DOCS_DIR}}'
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+    cmds:
+      - npm ci
+
+  docs:dev:
+    desc: Preview the documentation site locally
+    dir: '{{.DOCS_DIR}}'
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+    cmds:
+      - npm ci
+      - npm run dev
+
+  docs:build:
+    desc: Build the documentation site into docs/dist
+    dir: '{{.DOCS_DIR}}'
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+    cmds:
+      - npm ci
+      - npm run build
+
+  ci:
+    desc: Validate the library and build the documentation site
+    cmds:
+      - task: validate
+      - task: docs:build
 
   normalize:
     desc: 'Rewrite non ASCII dashes in generated files (usage: task normalize [TARGET=/path])'

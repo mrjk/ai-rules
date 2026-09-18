@@ -1,4 +1,7 @@
 node_modules/
+docs/node_modules/
+docs/dist/
+docs/.astro/
 
 # Created by 'task bootstrap' so this repo can resolve its own rules
 /.rulesmith/

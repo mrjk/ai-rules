@@ -1,4 +1,7 @@
-# Point-of-view rules
+---
+title: Point-of-view rules
+description: Person-prefixed opinions, default mrjk set, source map
+---
 
 `pov` holds person-prefixed opinions. They are not universal house law. A later contributor can
 add `pov/alice-cicd` without editing `pov/mrjk-cicd`. Slugs stay two segments:

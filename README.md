@@ -3,6 +3,8 @@
 A reusable library of AI agent rules, composed into per project agent files with
 [ai-rulesmith](https://github.com/Luzgan/ai-rulesmith).
 
+Documentation: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
+
 Rules are small markdown atoms under `src/rules/`. Profiles under `src/profiles/` compose them into a
 `CLAUDE.md`, `.cursorrules` or `AGENTS.md` for a given kind of project. Define a practice once, use
 it in every project.
@@ -21,6 +23,9 @@ it in every project.
 | `task list` | List every resolvable rule: this library, plus the ai-rulesmith built-ins |
 | `task validate` | Validate this repo's config and every profile |
 | `task build` | Rebuild this repo's own agent files |
+| `task docs:dev` | Preview the Starlight site locally |
+| `task docs:build` | Build the site into `docs/dist` |
+| `task ci` | Validate the library and build the site |
 
 Tools are pinned in `mise.toml`, so `mise install` is the only setup step.
 
@@ -83,8 +88,21 @@ overrides a slug. Profiles reference built-ins directly. Run `task list` to see 
 
 ## Docs
 
-- [docs/structure.md](docs/structure.md): the layout, the slug constraint, resolution order
-- [docs/authoring.md](docs/authoring.md): how to write a rule, and the variables gotcha
-- [docs/rule-template.md](docs/rule-template.md): templates for a plain rule and for a role
-- [docs/specs.md](docs/specs.md): the original requirements and the design decisions
-- [docs/pov.md](docs/pov.md): person-prefixed opinions, default mrjk set, source map
+Site: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
+
+- [Using with Cursor](https://mrjk.github.io/ai-rules/start/cursor/): install a profile and generate `.cursorrules`
+- [Library structure](https://mrjk.github.io/ai-rules/library/structure/): the layout, the slug constraint, resolution order
+- [Authoring](https://mrjk.github.io/ai-rules/library/authoring/): how to write a rule, and the variables gotcha
+- [Rule templates](https://mrjk.github.io/ai-rules/library/rule-template/): templates for a plain rule and for a role
+- [Specs](https://mrjk.github.io/ai-rules/library/specs/): the original requirements and the design decisions
+- [POV](https://mrjk.github.io/ai-rules/library/pov/): person-prefixed opinions, default mrjk set, source map
+- [Rules](https://mrjk.github.io/ai-rules/rules/general/ascii-punctuation/): browse every rule in the library
+
+Local sources live under `docs/src/content/docs/`. Scratch notes stay in `docs/TMP/` and are not published.
+
+### GitHub Pages (one-time)
+
+1. Push `main` to `origin`.
+2. Repo **Settings > Pages**: Source = **GitHub Actions** (not "Deploy from a branch").
+3. Allow Actions for the repo. Private repos need a paid plan for Pages.
+4. Wait for the `ci` workflow on `main`, then open https://mrjk.github.io/ai-rules/
