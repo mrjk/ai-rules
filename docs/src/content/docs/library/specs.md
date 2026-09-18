@@ -5,23 +5,22 @@ description: Original requirements and design decisions
 
 ## Project specifications
 
-* I want to write down all ai/agent rules, to be reusable in different contexts
-* I want a clear file structure
-* Use the following best practices documentations:
-  * docs/TMP/bp1.md, bp2.md, bp3.md, bp4.md
-* I would use https://github.com/Luzgan/ai-rulesmith to generate the rules
-    * Follow project best practices, read doc on: https://raw.githubusercontent.com/Luzgan/ai-rulesmith/refs/heads/main/README.md
-* I want to have at least the following concepts:
-  * General rules
-  * Roles: like devel, reviewer, architect, qa, product owner, architect ...
-  * KB:
-    * Per languages
-    * Per target or types: Full python project, (simple CLI, simple web app, single portable py script)
-    * Must include all software workflow development
-    * Any other suggestions to improve this ?
-    * Workflow: simple/fast to bigger/stricter projects
-    * Tooling support and best practices
-    * Best practices
+* The collection of AI/agent rules should be documented comprehensively to ensure reusability across diverse contexts.
+* The file structure must be clear, consistent, and maintainable.
+* Adhere to the guidelines outlined in the following best practices documentation
+* Utilize the tool available at https://github.com/Luzgan/ai-rulesmith for rule generation.
+    * Conform to project standards by reviewing the documentation at: https://raw.githubusercontent.com/Luzgan/ai-rulesmith/refs/heads/main/README.md
+* The framework should incorporate the following core concepts:
+  * General rules applicable across use cases
+  * Role-specific perspectives, such as developer, reviewer, architect, QA, product owner, etc.
+  * Knowledge Base (KB), structured as follows:
+    * By programming languages
+    * By project types or targets (e.g., complete Python projects, command-line tools, web applications, standalone scripts)
+    * Comprehensive coverage of software development workflows
+    * Opportunities for continuous improvement and feedback
+    * Support for workflows ranging from lightweight/rapid to large-scale/rigorous projects
+    * Guidance on tooling integration and adherence to best practices
+
 
 ## Design decisions
 

@@ -91,6 +91,7 @@ overrides a slug. Profiles reference built-ins directly. Run `task list` to see 
 Site: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
 
 - [Using with Cursor](https://mrjk.github.io/ai-rules/start/cursor/): install a profile and generate `.cursorrules`
+- [Cursor user rule for git](https://mrjk.github.io/ai-rules/start/cursor-user-git/): stop the default commit protocol from overriding Conventional Commits
 - [Library structure](https://mrjk.github.io/ai-rules/library/structure/): the layout, the slug constraint, resolution order
 - [Authoring](https://mrjk.github.io/ai-rules/library/authoring/): how to write a rule, and the variables gotcha
 - [Rule templates](https://mrjk.github.io/ai-rules/library/rule-template/): templates for a plain rule and for a role
