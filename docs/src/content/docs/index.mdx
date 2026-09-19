@@ -1,30 +1,29 @@
 ---
 title: AI Rules
-description: Reusable AI agent rules composed with ai-rulesmith
+description: Reusable AI agent modules composed with ai-rulez
 ---
 
-A library of small markdown rules under `src/rules/`. Profiles under `src/profiles/` compose them
-into `.cursorrules`, `AGENTS.md`, or `.github/copilot-instructions.md` with
-[ai-rulesmith](https://github.com/Luzgan/ai-rulesmith).
+A library of composable modules under `modules/`. Recipes under `examples/` declare intention
+(`builtins` + includes) and [ai-rulez](https://github.com/Goldziher/ai-rulez) generates assistant
+files.
 
 Define a practice once, reuse it in every project.
 
 ## Start here
 
-- [Install and apply](start/install/) - install the library, pick a profile, generate agent files
-- [Cursor](start/cursor/) / [GitHub Copilot](start/copilot/) / [Codex](start/codex/) - tool-specific output and usage
-- [GitHub Pages](start/github-pages/) - how this site is built and what to enable on GitHub
-- [Library structure](library/structure/) - slugs, categories, resolution order
-- [Rules](rules/general/ascii-punctuation/) - browse every rule in this library
+- [Install and apply](start/install/) - pick a recipe, generate agent files
+- [Migrate from ai-rulesmith](start/migrate/) - playbook for old `AI_RULES.json` projects
+- [Cursor](start/cursor/) / [GitHub Copilot](start/copilot/) / [Codex](start/codex/) - tool output
+- [Library structure](library/structure/) - modules, includes, intention
+- [Rules](rules/house/ascii-punctuation/) - browse module rules
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
 | `task install` | Install tools pinned in `mise.toml` |
-| `task link` | Symlink `src/rules/` to `~/.config/rulesmith/rules` |
-| `task vendor TARGET=/path` | Copy a snapshot into a project's `.rulesmith/rules/` |
-| `task apply PROFILE=<name> TARGET=/path` | Install a profile and build agent files |
-| `task validate` | Validate this repo's config and every profile |
+| `task apply RECIPE=<name> TARGET=/path` | Copy a recipe into a project |
+| `task validate` | Validate dogfood config and every recipe |
+| `task build` | Generate this repo's agent files |
 | `task docs:dev` | Preview this site locally |
 | `task ci` | Validate the library and build the site |

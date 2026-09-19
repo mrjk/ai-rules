@@ -3,10 +3,12 @@ import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
 
 const ruleFields = z.object({
+  title: z.string().optional(),
   name: z.string().optional(),
+  priority: z.union([z.string(), z.number()]).optional(),
   category: z.string().optional(),
   tags: z.array(z.string()).optional(),
-  vars: z.record(z.unknown()).optional(),
+  description: z.string().optional(),
 });
 
 export const collections = {

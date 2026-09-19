@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { listProfiles } from './src/lib/profiles.mjs';
+import { listRecipes } from './src/lib/profiles.mjs';
 import { remarkStripRuleH1 } from './src/lib/strip-rule-h1.mjs';
 
-const profileSidebarItems = listProfiles().map((name) => ({
+const recipeSidebarItems = listRecipes().map((name) => ({
   label: name,
   link: `profiles/${name}/`,
 }));
@@ -20,7 +20,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'AI Rules',
-      description: 'Reusable AI agent rules composed with ai-rulesmith',
+      description: 'Reusable AI agent modules composed with ai-rulez',
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/mrjk/ai-rules' },
       ],
@@ -29,6 +29,7 @@ export default defineConfig({
           label: 'Start',
           items: [
             { label: 'Install and apply', slug: 'start/install' },
+            { label: 'Migrate from rulesmith', slug: 'start/migrate' },
             { label: 'GitHub Pages', slug: 'start/github-pages' },
           ],
         },
@@ -46,8 +47,8 @@ export default defineConfig({
           autogenerate: { directory: 'library' },
         },
         {
-          label: 'Profiles',
-          items: profileSidebarItems,
+          label: 'Recipes',
+          items: recipeSidebarItems,
         },
         {
           label: 'Rules',

@@ -6,7 +6,7 @@ description: Paste-ready User Rules block so Cursor does not override Convention
 Cursor injects a user-level git-commit protocol into every Agent chat. The stock version drafts a
 1-2 sentence prose message focused on why, not what. That instruction is more specific to "please
 commit" than a project's **Before You Finish** section, so it wins over
-`git/conventional-commits` in `.cursorrules`.
+`git/conventional-commits` in generated agent files.
 
 Do not paste the full [Conventional Commits](../rules/git/conventional-commits/) rule into User
 Rules. Replace only the **message-drafting** bullets of the stock protocol. Keep the safety parts
@@ -30,7 +30,7 @@ hard limit 72 characters.
 Body is optional "-" bullets, separated from the title by a blank line. Omit the body when the
 title already says everything. Plain text only: no bold, italics, or fenced code in the message.
 
-If the project has git/conventional-commits, or the same practice in .cursorrules or AGENTS.md,
+If the project has git/conventional-commits, or the same practice in AGENTS.md or Cursor rules,
 follow that rule for the message. Do not replace it with a 1-2 sentence prose summary.
 
 If the project has no commit convention, still use type(scope): description, not a paragraph title.

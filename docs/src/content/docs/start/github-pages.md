@@ -4,8 +4,8 @@ description: Enable Actions-based Pages for this documentation site
 ---
 
 The site is a Starlight app under `docs/`. CI builds it with mise and Task, then GitHub Pages
-serves `docs/dist`. Rule pages come from a symlink to `src/rules/`; profile pages are Astro routes
-that read `src/profiles/*.json` at build time.
+serves `docs/dist`. Rule pages come from symlinks into `modules/*/rules/`; recipe pages are Astro
+routes that read `examples/*/.ai-rulez/config.toml` at build time.
 
 Live URL: [https://mrjk.github.io/ai-rules/](https://mrjk.github.io/ai-rules/)
 

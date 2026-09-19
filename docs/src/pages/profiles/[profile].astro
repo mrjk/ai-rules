@@ -1,139 +1,63 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
-import RuleList from '../../components/RuleList.astro';
-import {
-  groupIdenticalWorkflows,
-  listProfiles,
-  loadProfile,
-} from '../../lib/profiles.mjs';
+import { listRecipes, loadRecipe } from '../../lib/profiles.mjs';
 
 export function getStaticPaths() {
-  return listProfiles().map((profile) => {
-    const targets = loadProfile(profile);
-    const groups = groupIdenticalWorkflows(targets);
+  return listRecipes().map((recipe) => {
+    const data = loadRecipe(recipe);
     return {
-      params: { profile },
-      props: { profile, groups },
+      params: { profile: recipe },
+      props: { recipe, data },
     };
   });
 }
 
-const { profile, groups } = Astro.props;
-const workflowTypes = [...new Set(groups.map((g) => g.workflow.type))].join(', ');
-const allTargets = [...new Set(groups.flatMap((g) => g.targets))].join(', ');
+const { recipe, data } = Astro.props;
 
-function sectionId(label) {
-  return label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
-
-function stepId(groupId, stepName) {
-  return `${groupId}-step-${stepName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-}
-
-const headings = [{ depth: 2, slug: 'apply', text: 'Apply' }];
-for (const group of groups) {
-  const label = groups.length === 1 ? 'Workflow' : `Targets: ${group.targets.join(', ')}`;
-  const id = sectionId(label);
-  headings.push({ depth: 2, slug: id, text: label });
-  headings.push({ depth: 3, slug: `${id}-preamble`, text: 'Preamble' });
-  headings.push({ depth: 3, slug: `${id}-before-start`, text: 'before_start' });
-  if (group.workflow.type === 'steps' && group.workflow.steps) {
-    for (const step of group.workflow.steps) {
-      headings.push({
-        depth: 3,
-        slug: stepId(id, step.step_name),
-        text: step.step_name,
-      });
-    }
-  } else {
-    headings.push({ depth: 3, slug: `${id}-rules`, text: 'rules' });
-  }
-  headings.push({ depth: 3, slug: `${id}-before-finish`, text: 'before_finish' });
-}
+const headings = [
+  { depth: 2, slug: 'apply', text: 'Apply' },
+  { depth: 2, slug: 'builtins', text: 'Builtins' },
+  { depth: 2, slug: 'includes', text: 'Includes' },
+  { depth: 2, slug: 'config', text: 'config.toml' },
+];
 ---
 
 <StarlightPage
   frontmatter={{
-    title: profile,
-    description: `Profile ${profile}: ${workflowTypes} workflow for ${allTargets}`,
-    editUrl: `https://github.com/mrjk/ai-rules/edit/main/src/profiles/${profile}.json`,
+    title: recipe,
+    description: data.description,
+    editUrl: `https://github.com/mrjk/ai-rules/edit/main/examples/${recipe}/.ai-rulez/config.toml`,
   }}
   headings={headings}
 >
   <p>
-    Source of truth: <code>src/profiles/{profile}.json</code>. This page is generated at docs
-    build time from that file.
+    Intention recipe: <code>examples/{recipe}/.ai-rulez/config.toml</code>. Copy it into a
+    project as <code>.ai-rulez/config.toml</code>, rewrite includes for a git
+    <code>source</code> and <code>ref</code>, then generate.
   </p>
 
   <AnchorHeading level={2} id="apply">Apply</AnchorHeading>
-  <pre><code>task apply PROFILE={profile} TARGET=/path/to/project</code></pre>
+  <pre><code>task apply RECIPE={recipe} TARGET=/path/to/project</code></pre>
 
-  {
-    groups.map((group) => {
-      const label =
-        groups.length === 1 ? 'Workflow' : `Targets: ${group.targets.join(', ')}`;
-      const id = sectionId(label);
-      const { workflow } = group;
+  <AnchorHeading level={2} id="builtins">Builtins</AnchorHeading>
+  <ul>
+    {data.builtins.map((b) => (
+      <li>
+        <code>{b}</code>
+      </li>
+    ))}
+  </ul>
 
-      return (
-        <>
-          <AnchorHeading level={2} id={id}>
-            {label}
-          </AnchorHeading>
-          <p>
-            Type: <code>{workflow.type}</code>
-            {groups.length === 1 && allTargets ? (
-              <>
-                {' '}
-                | Targets: <code>{allTargets}</code>
-              </>
-            ) : null}
-          </p>
+  <AnchorHeading level={2} id="includes">Includes</AnchorHeading>
+  <ul>
+    {data.includes.map((name) => (
+      <li>
+        <code>modules/{name}</code>
+      </li>
+    ))}
+  </ul>
 
-          <AnchorHeading level={3} id={`${id}-preamble`}>
-            Preamble
-          </AnchorHeading>
-          {workflow.preamble ? (
-            <blockquote>
-              <p>{workflow.preamble}</p>
-            </blockquote>
-          ) : (
-            <p>
-              <em>None</em>
-            </p>
-          )}
-
-          <AnchorHeading level={3} id={`${id}-before-start`}>
-            before_start
-          </AnchorHeading>
-          <RuleList rules={workflow.before_start ?? []} />
-
-          {workflow.type === 'steps' && workflow.steps ? (
-            workflow.steps.map((step) => (
-              <>
-                <AnchorHeading level={3} id={stepId(id, step.step_name)}>
-                  {step.step_name}
-                </AnchorHeading>
-                {step.description ? <p>{step.description}</p> : null}
-                <RuleList rules={step.rules} />
-              </>
-            ))
-          ) : (
-            <>
-              <AnchorHeading level={3} id={`${id}-rules`}>
-                rules
-              </AnchorHeading>
-              <RuleList rules={workflow.rules ?? []} />
-            </>
-          )}
-
-          <AnchorHeading level={3} id={`${id}-before-finish`}>
-            before_finish
-          </AnchorHeading>
-          <RuleList rules={workflow.before_finish ?? []} />
-        </>
-      );
-    })
-  }
+  <AnchorHeading level={2} id="config">config.toml</AnchorHeading>
+  <pre><code>{data.raw}</code></pre>
 </StarlightPage>

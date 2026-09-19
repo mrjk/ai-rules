@@ -1,74 +1,61 @@
 ---
 title: Install and apply
-description: Install this library, pick a profile, and generate agent files
+description: Install this library, pick a recipe, and generate agent files with ai-rulez
 ---
 
-This library does not talk to any AI tool by itself.
-[ai-rulesmith](https://github.com/Luzgan/ai-rulesmith) reads `AI_RULES.json` and writes the
-files each target expects. Run `ai-rulesmith list-targets` for the full list of supported
-targets and their output paths.
+This library ships bare [ai-rulez](https://github.com/Goldziher/ai-rulez) modules under
+`modules/`. Consumer projects declare **intention** in `.ai-rulez/config.toml` via
+`builtins` and `[[includes]]`, then run `ai-rulez generate`.
 
 ## 1. Install tools in this repo
-
-From a clone of [ai-rules](https://github.com/mrjk/ai-rules):
 
 ```bash
 mise install
 task install
 ```
 
-`mise.toml` pins Node, Task, and `ai-rulesmith`. `task install` is `mise install`.
+`mise.toml` pins Node, Task, and `ai-rulez`.
 
-## 2. Make the rules visible to the target project
-
-Pick one:
+## 2. Apply a recipe
 
 ```bash
-task link                              # global: all projects see this library
-task vendor TARGET=~/code/my-project   # pin a snapshot in one project
+task apply RECIPE=python-cli-standard TARGET=~/code/my-project
 ```
 
-`task link` symlinks `src/rules/` to `~/.config/rulesmith/rules`. `task vendor` copies the files
-into `TARGET/.rulesmith/rules/`.
+That copies `examples/<RECIPE>/config.toml` to `TARGET/.ai-rulez/config.toml`.
 
-## 3. Apply a profile
+## 3. Point includes at the published library
 
-```bash
-task apply PROFILE=python-cli-standard TARGET=~/code/my-project
+Local recipe paths work only inside this checkout. In a consumer project, rewrite each include:
+
+```toml
+[[includes]]
+name = "house"
+source = "https://github.com/mrjk/ai-rules.git"
+path = "modules/house"
+ref = "v1.0.0"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
 ```
 
-That copies `src/profiles/<PROFILE>.json` to `TARGET/AI_RULES.json` and runs `ai-rulesmith build`
-in the target. Profiles in this library include three targets by default: Cursor, Codex, and
-GitHub Copilot. Typical output:
+Pin `ref` to a release tag when you want stable updates.
 
-- `AI_RULES.json` - which rules to compose, plus a `preamble` you should edit
-- `.cursorrules` - [Cursor](./cursor/)
-- `AGENTS.md` - [Codex](./codex/)
-- `.github/copilot-instructions.md` - [GitHub Copilot](./copilot/)
+## 4. Describe the project, then generate
 
-See [Profiles](../library/profiles/) for the list shipped here.
-
-## 4. Describe the project, then rebuild
-
-Edit the `preamble` in `AI_RULES.json` so the agent knows what the repo is. Rebuild after that
-change:
+Add context under `.ai-rulez/context/`, then:
 
 ```bash
 cd ~/code/my-project
-ai-rulesmith build --force --no-preview
+ai-rulez validate
+ai-rulez generate
 ```
 
-From this repo you can rebuild a target again with `task apply` (it overwrites `AI_RULES.json`
-from the profile) or run `ai-rulesmith build` in the target if you only changed the preamble.
+Typical outputs (presets in the recipe): Cursor (`.cursor/rules/`), Codex (`AGENTS.md`),
+GitHub Copilot (`.github/copilot-instructions.md`).
 
-## This repository
+## 5. Optional MCP enablement
 
-This repo uses the `rulesmith-library-standard` profile. `AI_RULES.json` at the root should stay in
-sync with `src/profiles/rulesmith-library-standard.json` (rule lists and steps; keep the local
-preamble). After changing that profile:
+Recipes enable the ai-rulez MCP server. With MCP connected, ask the assistant to use the
+`enablement-guide` skill to turn modules on or off, then regenerate.
 
-```bash
-task build
-```
-
-That regenerates this repo's agent files for Cursor, Codex, and GitHub Copilot.
+See [Recipes](../library/profiles/) and [Library structure](../library/structure/).
