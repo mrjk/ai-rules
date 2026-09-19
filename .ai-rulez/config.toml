@@ -1,0 +1,74 @@
+# AI-Rulez dogfood config for the ai-rules library itself.
+# Documentation: https://goldziher.github.io/ai-rulez/
+
+version = "4.0"
+name = "ai-rules"
+description = "Composable AI agent rules library (ai-rulez modules and recipes)"
+
+presets = ["cursor", "codex", "copilot"]
+gitignore = true
+
+# Prefer stock builtins; house and meta modules add what builtins do not cover.
+builtins = [
+  "ai-governance",
+  "code-quality",
+  "git-workflow",
+  "security",
+  "token-efficiency",
+  "default-commands",
+]
+
+# Local bare modules. source must be the module dir itself so detection does not
+# pick up this project's .ai-rulez/ wrapper. Consumers use a git URL + path=.
+[[includes]]
+name = "house"
+source = "./modules/house"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "sdlc"
+source = "./modules/sdlc"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "git"
+source = "./modules/git"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "security-house"
+source = "./modules/security"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "meta-library"
+source = "./modules/meta-library"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "role"
+source = "./modules/role"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "workflow-standard"
+source = "./modules/workflow-standard"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "pov-mrjk"
+source = "./modules/pov-mrjk"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[mcp_servers]]
+name = "ai-rulez"
+command = "mise"
+args = ["exec", "--", "ai-rulez", "mcp"]
