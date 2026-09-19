@@ -3,27 +3,12 @@
 version: '3'
 
 vars:
-  # Source of truth: the rule library in this repo.
-  SRC_SUBDIR: src
-  RULES_SUBDIR: rules
-  PROFILES_SUBDIR: profiles
-  SRC_DIR: '{{.ROOT_DIR}}/{{.SRC_SUBDIR}}'
-  RULES_DIR: '{{.SRC_DIR}}/{{.RULES_SUBDIR}}'
-  PROFILES_DIR: '{{.SRC_DIR}}/{{.PROFILES_SUBDIR}}'
-  # Relative to .rulesmith/, the directory that holds the bootstrap symlink.
-  BOOTSTRAP_RULES_REL: '../{{.SRC_SUBDIR}}/{{.RULES_SUBDIR}}'
-  # Where ai-rulesmith looks for global rules (see docs/src/content/docs/library/structure.md).
-  GLOBAL_RULES_DIR: '{{.HOME}}/.config/rulesmith/rules'
-  # Per project locations, relative to the consuming project.
-  PROJECT_RULES_SUBDIR: '.rulesmith/rules'
-  PROJECT_CONFIG_NAME: 'AI_RULES.json'
+  MODULES_DIR: '{{.ROOT_DIR}}/modules'
+  EXAMPLES_DIR: '{{.ROOT_DIR}}/examples'
   DOCS_DIR: '{{.ROOT_DIR}}/docs'
   DOCS_DIST: '{{.DOCS_DIR}}/dist'
   MISE: mise
-  # Absolute binary from this repo's mise.toml, so apply can cd into TARGET.
-  RULESMITH: '"$({{.MISE}} -C ''{{.ROOT_DIR}}'' which ai-rulesmith)"'
-  # rulesmith previews and asks for confirmation by default, which does not work unattended.
-  BUILD_FLAGS: '--force --no-preview'
+  AIRULEZ: '"$({{.MISE}} -C ''{{.ROOT_DIR}}'' which ai-rulez)"'
 
 tasks:
   default:
@@ -38,98 +23,50 @@ tasks:
       - '{{.MISE}} install'
 
   help:
-    desc: 'Show ai-rulesmith CLI help (usage: task help -- [command])'
+    desc: 'Show ai-rulez CLI help (usage: task help -- validate)'
     cmds:
-      - '{{.RULESMITH}} help {{.CLI_ARGS}}'
+      - '{{.AIRULEZ}} {{.CLI_ARGS}}'
 
-  rulesmith:
-    desc: 'Pass args to ai-rulesmith (usage: task rulesmith -- --help)'
+  rulez:
+    desc: 'Pass args to ai-rulez (usage: task rulez -- validate)'
     cmds:
-      - '{{.RULESMITH}} {{.CLI_ARGS}}'
-
-  bootstrap:
-    desc: Make this repo resolve its own rules, so validate and build work without a global install
-    status:
-      - test -L '{{.ROOT_DIR}}/{{.PROJECT_RULES_SUBDIR}}'
-      - test "$(readlink '{{.ROOT_DIR}}/{{.PROJECT_RULES_SUBDIR}}')" = '{{.BOOTSTRAP_RULES_REL}}'
-    cmds:
-      - mkdir -p '{{.ROOT_DIR}}/{{.PROJECT_RULES_SUBDIR | dir}}'
-      - ln -sfn '{{.BOOTSTRAP_RULES_REL}}' '{{.ROOT_DIR}}/{{.PROJECT_RULES_SUBDIR}}'
-
-  link:
-    desc: Install this library globally by symlinking src/rules into ~/.config/rulesmith
-    cmds:
-      - mkdir -p "$(dirname '{{.GLOBAL_RULES_DIR}}')"
-      - |
-        if [ -e '{{.GLOBAL_RULES_DIR}}' ] && [ ! -L '{{.GLOBAL_RULES_DIR}}' ]; then
-          echo "Refusing to replace real directory {{.GLOBAL_RULES_DIR}}" >&2
-          echo "Move it aside, or use 'task vendor' instead." >&2
-          exit 1
-        fi
-      - ln -sfn '{{.RULES_DIR}}' '{{.GLOBAL_RULES_DIR}}'
-      - echo "Linked {{.GLOBAL_RULES_DIR}} -> {{.RULES_DIR}}"
-
-  unlink:
-    desc: Remove the global symlink
-    cmds:
-      - |
-        if [ -L '{{.GLOBAL_RULES_DIR}}' ]; then
-          rm '{{.GLOBAL_RULES_DIR}}'
-          echo "Removed {{.GLOBAL_RULES_DIR}}"
-        else
-          echo "Nothing to remove: {{.GLOBAL_RULES_DIR}} is not a symlink"
-        fi
-
-  vendor:
-    desc: 'Copy a snapshot of the library into a project (usage: task vendor TARGET=/path/to/project)'
-    requires:
-      vars: [TARGET]
-    vars:
-      DEST: '{{.TARGET}}/{{.PROJECT_RULES_SUBDIR}}'
-    cmds:
-      - mkdir -p '{{.DEST}}'
-      - rsync -a --delete '{{.RULES_DIR}}/' '{{.DEST}}/'
-      - echo "Vendored into {{.DEST}}"
-
-  apply:
-    desc: 'Install a profile into a project and build it (usage: task apply PROFILE=python-cli-standard TARGET=/path)'
-    requires:
-      vars: [PROFILE, TARGET]
-    vars:
-      SRC: '{{.PROFILES_DIR}}/{{.PROFILE}}.json'
-    cmds:
-      - |
-        test -f '{{.SRC}}' || { echo "No such profile: {{.SRC}}" >&2; exit 1; }
-      - cp '{{.SRC}}' '{{.TARGET}}/{{.PROJECT_CONFIG_NAME}}'
-      # rulesmith resolves both rules and output paths against the cwd, so build from the target.
-      - cd '{{.TARGET}}' && {{.RULESMITH}} build {{.BUILD_FLAGS}}
-      - task: normalize
-        vars:
-          TARGET: '{{.TARGET}}'
-
-  build:
-    desc: Build agent files for this repo from its own AI_RULES.json
-    deps: [bootstrap]
-    cmds:
-      - '{{.RULESMITH}} build {{.BUILD_FLAGS}} {{.CLI_ARGS}}'
-      - task: normalize
+      - '{{.AIRULEZ}} {{.CLI_ARGS}}'
 
   validate:
-    desc: Validate this repo's config and every profile
-    deps: [bootstrap]
+    desc: Validate this repo's ai-rulez config and every example recipe
     cmds:
-      - '{{.RULESMITH}} validate'
+      - '{{.AIRULEZ}} validate'
       - |
-        for f in '{{.PROFILES_DIR}}'/*.json; do
-          echo "== $f"
-          {{.RULESMITH}} validate -c "$f"
+        for d in '{{.EXAMPLES_DIR}}'/*/; do
+          name="$(basename "${d%/}")"
+          echo "== examples/$name"
+          (cd "{{.EXAMPLES_DIR}}/$name" && {{.AIRULEZ}} validate)
         done
 
-  list:
-    desc: List all resolvable rules (custom, global and built-in)
-    deps: [bootstrap]
+  build:
+    desc: Generate agent files from .ai-rulez/
     cmds:
-      - '{{.RULESMITH}} list-rules {{.CLI_ARGS}}'
+      - '{{.AIRULEZ}} generate {{.CLI_ARGS}}'
+
+  list:
+    desc: List rules visible to this repo's config
+    cmds:
+      - '{{.AIRULEZ}} list rules {{.CLI_ARGS}}'
+
+  apply:
+    desc: 'Copy an example recipe into a project (usage: task apply RECIPE=python-cli-standard TARGET=/path)'
+    requires:
+      vars: [RECIPE, TARGET]
+    vars:
+      SRC: '{{.EXAMPLES_DIR}}/{{.RECIPE}}/.ai-rulez/config.toml'
+    cmds:
+      - |
+        test -f '{{.SRC}}' || { echo "No such recipe: {{.SRC}}" >&2; exit 1; }
+      - mkdir -p '{{.TARGET}}/.ai-rulez'
+      - cp '{{.SRC}}' '{{.TARGET}}/.ai-rulez/config.toml'
+      - echo "Wrote {{.TARGET}}/.ai-rulez/config.toml"
+      - |
+        echo "Rewrite includes for git source+ref (see examples/README.md), then run ai-rulez generate"
 
   docs:install:
     desc: Install Starlight dependencies
@@ -162,15 +99,3 @@ tasks:
     cmds:
       - task: validate
       - task: docs:build
-
-  normalize:
-    desc: 'Rewrite non ASCII dashes in generated files (usage: task normalize [TARGET=/path])'
-    vars:
-      DIR: '{{default .ROOT_DIR .TARGET}}'
-    cmds:
-      # Only touch files carrying the generator marker, so hand written sources are never rewritten.
-      # The em dash and en dash come from the tool header and from some built-in rules.
-      - |
-        grep -rlZ 'Generated by AI Rulesmith' '{{.DIR}}' \
-          --exclude-dir=.git --exclude-dir=node_modules \
-          | xargs -0 -r sed -i 's/\xe2\x80\x94/-/g; s/\xe2\x80\x93/-/g'

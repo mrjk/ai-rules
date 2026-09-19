@@ -1,0 +1,107 @@
+# Intention recipe for ai-rulez consumers.
+# For a published library pin, replace each include with:
+#   source = "https://github.com/mrjk/ai-rules.git"
+#   path = "modules/<module>"
+#   ref = "vX.Y.Z"
+# Local paths below work from a checkout of this repo (CI / dogfood).
+
+version = "4.0"
+name = "python-web-standard"
+description = "REPLACE ME: what this web service does"
+
+presets = ["cursor", "codex", "copilot"]
+gitignore = true
+
+builtins = [
+  "ai-governance",
+  "code-quality",
+  "git-workflow",
+  "security",
+  "token-efficiency",
+  "default-commands",
+  "python",
+  "docker",
+]
+
+[[includes]]
+name = "house"
+source = "../../modules/house"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "sdlc"
+source = "../../modules/sdlc"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "git"
+source = "../../modules/git"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "security"
+source = "../../modules/security"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "tool-mise"
+source = "../../modules/tool-mise"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "tool-task"
+source = "../../modules/tool-task"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "lang-python"
+source = "../../modules/lang-python"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "tool-python"
+source = "../../modules/tool-python"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "tool-docker"
+source = "../../modules/tool-docker"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "stack-python-web"
+source = "../../modules/stack-python-web"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "workflow-standard"
+source = "../../modules/workflow-standard"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "role"
+source = "../../modules/role"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[includes]]
+name = "pov-mrjk"
+source = "../../modules/pov-mrjk"
+include = ["rules", "context", "skills", "agents"]
+merge_strategy = "local-override"
+
+[[mcp_servers]]
+name = "ai-rulez"
+command = "mise"
+args = ["exec", "--", "ai-rulez", "mcp"]
